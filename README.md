@@ -1,21 +1,21 @@
-# Stack
+## Usage
 
-**TODO: Add description**
-
-## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `stack` to your list of dependencies in `mix.exs`:
+Install dependencies with `mix deps.get`, then open in `iex` with `iex -S mix`.
 
 ```elixir
-def deps do
-  [
-    {:stack, "~> 0.1.0"}
-  ]
-end
+iex(1)> Stack.Server.push "world"
+:ok
+iex(2)> Stack.Server.push "hello"
+:ok
+iex(3)> :sys.get_state Stack.Server
+{["hello", "world"], #PID<0.152.0>}
+iex(4)> Stack.Server.pop
+"hello"
+iex(5)> :sys.get_state Stack.Server
+{["world"], #PID<0.152.0>}
+iex(6)> Stack.Server.stop
+:ok
+iex(7)> :sys.get_state Stack.Server
+{["world"], #PID<0.152.0>}
 ```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/stack>.
 

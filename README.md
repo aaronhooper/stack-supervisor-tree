@@ -13,6 +13,11 @@ iex(4)> Stack.Server.pop
 "hello"
 iex(5)> :sys.get_state Stack.Server
 {["world"], #PID<0.152.0>}
+```
+
+```
+# Stopping the server will save the state.
+# When the supervisor restarts the process, the state will be retrieved.
 iex(6)> Stack.Server.stop
 :ok
 iex(7)> :sys.get_state Stack.Server
